@@ -66,29 +66,32 @@ namespace SignProtect
 		{
 			if (e.MsgID == PacketTypes.SignNew)
 			{
-				try
+				if (enabled)
 				{
-					using (var data = new MemoryStream(e.Msg.readBuffer, e.Index, e.Length))
+					try
 					{
-						var reader = new BinaryReader(data);
-						int x = reader.ReadInt16();
-						int y = reader.ReadInt16();
-						reader.Close();
-
-						int id = Terraria.Sign.ReadSign(x, y);
-						TSPlayer player = TShock.Players[e.Msg.whoAmI];
-
-						if (!player.Group.HasPermission("signprotect.edit"))
+						using (var data = new MemoryStream(e.Msg.readBuffer, e.Index, e.Length))
 						{
-							player.SendErrorMessage("[SignProtect] You do not have permission to edit this sign.");
-							e.Handled = true;
-							return;
+							var reader = new BinaryReader(data);
+							int x = reader.ReadInt16();
+							int y = reader.ReadInt16();
+							reader.Close();
+
+							int id = Terraria.Sign.ReadSign(x, y);
+							TSPlayer player = TShock.Players[e.Msg.whoAmI];
+
+							if (!player.Group.HasPermission("signprotect.edit"))
+							{
+								player.SendErrorMessage("[SignProtect] You do not have permission to edit this sign.");
+								e.Handled = true;
+								return;
+							}
 						}
 					}
-				}
-				catch (Exception ex)
-				{
-					Console.WriteLine(ex);
+					catch (Exception ex)
+					{
+						Console.WriteLine(ex);
+					}
 				}
 			}
 		}
