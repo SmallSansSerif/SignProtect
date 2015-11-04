@@ -10,21 +10,21 @@ using TShockAPI;
 
 namespace SignProtect
 {
-    [ApiVersion(1, 22)]
-    public class SignProtect : TerrariaPlugin
-    {
-        public override Version Version
-        {
-            get { return new Version("1.0"); }
-        }
-        public override string Name
-        {
-            get { return "Sign Protect"; }
-        }
-        public override string Author
-        {
-            get { return "Bippity"; }
-        }
+	[ApiVersion(1, 22)]
+	public class SignProtect : TerrariaPlugin
+	{
+		public override Version Version
+		{
+			get { return new Version("1.0"); }
+		}
+		public override string Name
+		{
+			get { return "Sign Protect"; }
+		}
+		public override string Author
+		{
+			get { return "Bippity"; }
+		}
 		public override string Description
 		{
 			get { return "Blocks sign editing"; }
