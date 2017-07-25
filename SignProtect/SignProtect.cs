@@ -10,7 +10,7 @@ using TShockAPI;
 
 namespace SignProtect
 {
-	[ApiVersion(1, 22)]
+	[ApiVersion(2, 1)]
 	public class SignProtect : TerrariaPlugin
 	{
 		public override Version Version
